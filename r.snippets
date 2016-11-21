@@ -1,0 +1,229 @@
+#shows results, !rnorm(5)(tab)
+snippet !
+	`r eval(parse(text = "$$"))`
+
+# packages
+snippet had
+	library(tidyverse)
+
+snippet l_
+	library(${1:package})
+
+snippet ins
+	install.packages("${1:package}")
+
+snippet q_
+	${1:value}, ${2:more?}
+
+snippet w_
+	"${1:character}", ${2:more?}
+
+# usual structures
+snippet saf
+	stringsAsFactors = F
+
+snippet in_
+	%in%
+
+snippet p1
+	${1:content}{${2:content}}${3:content}
+
+snippet p2
+	${1:content}[${2:content}]${3:content}
+
+snippet p3
+	${1:content}[[${2:content}]]${3:content}
+	
+
+# dplyr 
+snippet lj
+	left_join(${1:table})
+
+snippet ljc
+	left_join(${1:table}) %<%
+	${2:next}
+
+snippet rj
+	right_join(${1:table})
+
+snippet rjc
+	right_join(${1:table}) %<%
+	${2:next}
+
+snippet mu
+	mutate(${1:action})
+
+snippet muc
+	mutate(${1:action}) %<%
+	${2:next}
+	
+snippet su
+	summarise(${1:action})
+
+snippet suc
+	summarise(${1:action}) %<%
+	${2:next}
+
+snippet fi_
+	filter(${1:action})
+
+snippet fic
+	filter(${1:action}) %<%
+	${2:next}
+
+snippet se
+	select(${1:action})
+
+snippet sec
+	select(${1:action}) %<%
+	${2:next}
+
+snippet sei
+	select_if(${1:action})
+
+snippet seic
+	select_if(${1:action}) %<%
+	${2:next}
+	
+snippet gr
+	group_by(${1:action})
+
+snippet grc
+	group_by(${1:action}) %<%
+	${2:next}
+
+snippet ar
+	arrange(${1:action})
+
+snippet arc
+	arrange(${1:action}) %<%
+	${2:next}
+
+snippet ad
+	arrange(desc(${1:action}))
+
+snippet adc
+	arrange(desc(${1:action})) %<%
+	${2:next}
+
+snippet dfd
+	${1:output} <- ${2:input} %>%
+	${3:action}
+
+snippet dfs
+	${1:output} <- ${1:input} %>%
+	${2:action}
+
+snippet ee
+	${1:first} == ${2:second}
+
+snippet e_
+	${1:first} = ${2:second}
+
+snippet p
+	${1:first} + ${2:second}
+
+snippet s
+	${1:element1} < ${2:element2}
+
+snippet se
+	${1:element1} <= ${2:element2}
+
+snippet b
+	f${1:element1} > ${2:element2})
+
+snippet be
+	${1:element1} >= ${2:element2})
+	
+snippet not
+	${1:element1} != ${2:element2}
+
+snippet fi
+	filter(${1:element1} %in% ${2:element2})
+
+snippet req
+	require(${1:package})
+
+snippet src
+	source("${1:file.R}")
+
+snippet ret
+	return(${1:code})
+
+snippet mat
+	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
+
+snippet if_
+	if_else(${1:action}, ${2:yes}, ${3:no}, missing = ${4:NULL})
+	
+snippet if
+	if (${1:condition}) {
+		${0}
+	}
+
+snippet el
+	else {
+		${0}
+	}
+
+snippet ei
+	else if (${1:condition}) {
+		${0}
+	}
+
+snippet fun
+	${1:name} <- function(${2:variables}) {
+		${0}
+	}
+
+snippet for
+	for (${1:variable} in ${2:vector}) {
+		${0}
+	}
+
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+
+snippet switch
+	switch (${1:object},
+		${2:case} = ${3:action}
+	)
+
+snippet apply
+	apply(${1:array}, ${2:margin}, ${3:...})
+
+snippet lapply
+	lapply(${1:list}, ${2:function})
+
+snippet sapply
+	sapply(${1:list}, ${2:function})
+
+snippet mapply
+	mapply(${1:function}, ${2:...})
+
+snippet tapply
+	tapply(${1:vector}, ${2:index}, ${3:function})
+
+snippet vapply
+	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
+
+snippet rapply
+	rapply(${1:list}, ${2:function})
+
+snippet ts
+	`r paste("#", date(), "------------------------------\n")`
+
+# functions
+
+snippet ano
+	function(${1:parameters}) ${2:actions}
+
+# ggplot
+snippet gg
+	ggplot(aes(${1:parameters} )) + ${2:actions}
+
+# transformations
+snippet fa
+	factor(${1:parameters})
