@@ -36,6 +36,19 @@ snippet p3
 	
 
 # dplyr 
+
+snippet gl
+	glimpse(${1:dataframe})
+
+snippet ga
+	gather(${1:varNameCol}, ${2:values}, ${3:range}, ${3:-notIncluded})
+
+snippet sp
+	spread(${1:varNameCol}, ${2:values})
+
+snippet to
+	top_n(${1:howMany}, ${2:whichColumn})
+
 snippet lj
 	left_join(${1:table})
 
