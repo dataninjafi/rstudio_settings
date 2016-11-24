@@ -1,0 +1,116 @@
+---
+title: "Vim Bindings"
+author: "Risto Kaartinen"
+date: "21 Nov 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Motions
+
+<b>
+```{r, echo=F}
+df <- matrix("", 11, 14) %>% 
+    data.frame(stringsAsFactors = F) %>% 
+    setNames(rep("",14))
+
+
+df[1,7] <- "&#9650;"
+df[2,7] <- "gg"
+df[3,7] <- "\\^b"
+df[4,7] <- "\\^u"
+df[5,7] <- "k"
+df[7,7] <- "j"
+df[8,7] <- "\\^d"
+df[9,7] <- "\\^f"
+df[10,7] <- "G"
+df[11,7] <- "&#9660;"
+df[6,1] <- "&#9668;"
+df[6,2] <- "0"
+df[6,3] <- "\\^"
+df[6,4] <- "B"
+df[6,5] <- "b"
+df[6,6] <- "h"
+df[6,7] <- ""
+df[6,8] <- "l"
+df[6,9] <- "e"
+df[6,10] <- "w"
+df[6,11] <- "E"
+df[6,12] <- "W"
+df[6,13] <- "$"
+df[6,14] <- "&#9658;"
+knitr::kable(df, align = "c")
+```
+</b>
+
+### Up
+
+* `gg` go to first line
+* `^b` 1 page up
+* `^u` 1/2 page up
+* `k` one row up
+
+### Backwards
+
+* `0` beginning of line
+* `^` first non-blank character
+* `B` previous WORD
+* `b` previous word
+
+### Forward
+
+* `l` one character right
+* `e` end of word
+* `w` beginning of next word
+* `E` end of WORD
+* `W` beginning of next WORD
+* `$` end of line
+
+### Enter Insert mode
+
+* `i` before cursor
+* `I` begin of line
+* `a` append cursor
+* `A` end of line
+* `O` previous line
+* `o` next line
+* `s` substitute character
+* `S` substitute line (same as `cc`)
+* `C` substitute end of line
+
+### Visual mode
+
+* `v` select from cursor
+* `V` select line
+* `^v` ???
+
+### Operators
+
+* y yank
+    * `yy` yank line
+* c change
+    * `C` change end of line
+    * `cw` change rest of word
+    * `ci[w/./)]` change in word/./)
+* `p` paste after cursor
+* `P` paste before cursor
+* `
+### Exercises
+
+"Remove quotes around this text" is `di"P2x`
+
+(Remove parentheses around this text) is `di)h2x`
+
+Yank first sentence. And second. But not the third. is `y2f.`
+
+eka, ""
+
+
+
+
+
+    
