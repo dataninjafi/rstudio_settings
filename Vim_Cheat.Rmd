@@ -12,6 +12,8 @@ library(tidyverse)
 
 ## Motions
 
+`r lv `
+
 <b>
 ```{r, echo=F}
 df <- matrix("", 11, 14) %>% 
@@ -47,42 +49,19 @@ knitr::kable(df, align = "c")
 ```
 </b>
 
-### Up
-
-* `gg` go to first line
-* `^b` 1 page up
-* `^u` 1/2 page up
-* `k` one row up
-
-### Backwards
-
-* `0` beginning of line
-* `^` first non-blank character
-* `B` previous WORD
-* `b` previous word
-
-### Forward
-
-* `l` one character right
-* `e` end of word
-* `w` beginning of next word
-* `E` end of WORD
-* `W` beginning of next WORD
-* `$` end of line
-
-### Enter Insert mode
+### enter insert mode
 
 * `i` before cursor
-* `I` begin of line
+* `i` begin of line
 * `a` append cursor
-* `A` end of line
-* `O` previous line
+* `a` end of line
+* `o` previous line
 * `o` next line
-* `s` substitute character
-* `S` substitute line (same as `cc`)
-* `C` substitute end of line
+* `s` sustitute character
+* `s` substitute line (same as `cc`)
+* `c` substitute end of line
 
-### Visual mode
+### visual mode
 
 * `v` select from cursor
 * `V` select line
@@ -101,15 +80,40 @@ knitr::kable(df, align = "c")
 * `
 ### Exercises
 
+#### Remove quotes around text
+
 "Remove quotes around this text" is `di"P2x`
+
+#### Remove parentheses 
 
 (Remove parentheses around this text) is `di)h2x`
 
+#### Yank 2 first sentences
+
 Yank first sentence. And second. But not the third. is `y2f.`
 
-eka, ""
+#### Make a increasing list
+
+"101 This is an item." repeat sentence increasing the number.
+On first row typ: qaYp[ctrl-a]q8@a
+
+Result is:
+101 This is an item.
+102 This is an item.
+103 This is an item.
+104 This is an item.
+105 This is an item.
+106 This is an item.
+107 This is an item.
+108 This is an item.
+109 This is an item.
+110 This is an item.
+111 This is an item.
 
 
+
+{  }	beginning of previous, next paragraph
+( )	beginning of previous, next sentence
 
 
 
