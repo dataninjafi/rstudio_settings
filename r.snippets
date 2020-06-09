@@ -1,249 +1,206 @@
-#shows results, !rnorm(5)(tab)
-snippet !
-	`r eval(parse(text = "$$"))`
-
-# packages
-snippet had
-	library(tidyverse)
-
-snippet l_
+snippet li
 	library(${1:package})
-
-snippet ins
-	install.packages("${1:package}")
-
-snippet q_
-	${1:value}, ${2:more?}
-
-snippet w_
-	"${1:character}", ${2:more?}
-	
-snippet lv
-	View(.Last.value)
-
-# usual structures
-
-snippet cod
-	`${1:code}`
-
-snippet saf
-	stringsAsFactors = F
-
-snippet i_
-	%in%
-
-snippet p1
-	${1:content}{${2:content}}${3:content}
-
-snippet p2
-	${1:content}[${2:content}]${3:content}
-
-snippet p3
-	${1:content}[[${2:content}]]${3:content}
-	
-
-# dplyr 
-
-snippet gl
-	glimpse(${1:dataframe})
-
-snippet ga
-	gather(${1:varNameCol}, ${2:values}, ${3:range}, ${3:-notIncluded})
-
-snippet sp
-	spread(${1:varNameCol}, ${2:values})
-
-snippet to
-	top_n(${1:howMany}, ${2:whichColumn})
-
-snippet lj
-	left_join(${1:table})
-
-snippet ljc
-	left_join(${1:table}) %<%
-	${2:next}
-
-snippet rj
-	right_join(${1:table})
-
-snippet rjc
-	right_join(${1:table}) %<%
-	${2:next}
-
-snippet mu
-	mutate(${1:action})
-
-snippet muc
-	mutate(${1:action}) %<%
-	${2:next}
-	
-snippet su
-	summarise(${1:action})
-
-snippet suc
-	summarise(${1:action}) %<%
-	${2:next}
-
-snippet fi_
-	filter(${1:action})
-
-snippet fic
-	filter(${1:action}) %<%
-	${2:next}
-
-snippet se
-	select(${1:action})
-
-snippet sec
-	select(${1:action}) %<%
-	${2:next}
-
-snippet sei
-	select_if(${1:action})
-
-snippet seic
-	select_if(${1:action}) %<%
-	${2:next}
-	
-snippet gr
-	group_by(${1:action})
-
-snippet grc
-	group_by(${1:action}) %<%
-	${2:next}
-
-snippet ar
-	arrange(${1:action})
-
-snippet arc
-	arrange(${1:action}) %<%
-	${2:next}
-
-snippet ad
-	arrange(desc(${1:action}))
-
-snippet adc
-	arrange(desc(${1:action})) %<%
-	${2:next}
-
-snippet dfd
-	${1:output} <- ${2:input} %>%
-	${3:action}
-
-snippet dfs
-	${1:output} <- ${1:input} %>%
-	${2:action}
-
-snippet ee
-	${1:first} == ${2:second}
-
-snippet e_
-	${1:first} = ${2:second}
-
-snippet p
-	${1:first} + ${2:second}
-
-snippet s
-	${1:element1} < ${2:element2}
-
-snippet se
-	${1:element1} <= ${2:element2}
-
-snippet b
-	f${1:element1} > ${2:element2})
-
-snippet be
-	${1:element1} >= ${2:element2})
-	
-snippet not
-	${1:element1} != ${2:element2}
-
-snippet fi
-	filter(${1:element1} %in% ${2:element2})
-
-snippet req
-	require(${1:package})
-
+snippet lib
+	library(${1:package})
 snippet src
 	source("${1:file.R}")
-
-snippet ret
-	return(${1:code})
-
-snippet mat
-	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
-
-snippet if_
-	if_else(${1:action}, ${2:yes}, ${3:no}, missing = ${4:NULL})
-	
 snippet if
 	if (${1:condition}) {
 		${0}
 	}
-
 snippet el
 	else {
 		${0}
 	}
-
-snippet ei
-	else if (${1:condition}) {
-		${0}
-	}
-
 snippet fun
 	${1:name} <- function(${2:variables}) {
 		${0}
 	}
-
 snippet for
 	for (${1:variable} in ${2:vector}) {
 		${0}
 	}
-
 snippet while
 	while (${1:condition}) {
 		${0}
 	}
-
 snippet switch
 	switch (${1:object},
 		${2:case} = ${3:action}
 	)
-
 snippet apply
 	apply(${1:array}, ${2:margin}, ${3:...})
-
 snippet lapply
 	lapply(${1:list}, ${2:function})
-
 snippet sapply
 	sapply(${1:list}, ${2:function})
-
 snippet mapply
 	mapply(${1:function}, ${2:...})
-
 snippet tapply
 	tapply(${1:vector}, ${2:index}, ${3:function})
-
 snippet vapply
 	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
-
 snippet rapply
 	rapply(${1:list}, ${2:function})
-
 snippet ts
 	`r paste("#", date(), "------------------------------\n")`
-
+snippet shinyapp
+	library(shiny)
+	
+	ui <- fluidPage(
+	  ${0}
+	)
+	
+	server <- function(input, output, session) {
+	  
+	}
+	
+	shinyApp(ui, server)
+snippet shinymod
+	${1:name}_UI <- function(id) {
+	  ns <- NS(id)
+	  tagList(
+		${0}
+	  )
+	}
+	
+	${1:name} <- function(input, output, session) {
+	  
+	}
+# packages
+snippet had
+	library(tidyverse)
+snippet ins
+	install.packages("${1:package}")
+snippet _w
+	"${1:character}"${0}
+# usual structures
+snippet cod
+	`${1:code}`
+snippet saf
+	stringsAsFactors = FALSE
+snippet in
+	${1:content} %in% ${2:content2}
+snippet eq
+	${1:content} == ${2:content}
+snippet is
+	${1:content} = ${2:content}
+snippet gl
+	glimpse(${1:data})
+snippet ga
+	pivot_longer(
+				cols = ${1:include_or_exclude_pivot_colums},
+				names_to = "${2:col_name}",
+				values_to = "${3:col_name}",
+				values_drop_na = FALSE)
+)
+snippet longer
+	pivot_longer(
+				cols = ${1:include_or_exclude_pivot_colums},
+				names_to = "${2:col_name}",
+				values_to = "${3:col_name}",
+				values_drop_na = FALSE)
+)
+snippet wider
+	pivot_wider(names_from = "${1:include_or_exclude_pivot_colums}"",
+							values_from = "${2:col_name}", 
+							values_fill = NULL)
+snippet sp
+	spread(${1:varNameCol}, ${2:values})
+snippet lj
+	left_join(${1:table})
+snippet rj
+	right_join(${1:table})
+snippet mu
+	mutate(${1:action})
+snippet fi
+	filter(${1:action})
+snippet fil
+	filter(${1:action})
+snippet su
+	summarise(${1:action})
+snippet fi
+	filter(${1:rule})
+snippet in
+	${1:action} %in% ${2:action} 
+snippet sde
+	str_detect(${1:sarake}, "${2:regex}"${3:, negate = TRUE})
+snippet se
+	select(${1:action})
+snippet sei
+	select_if(${1:action})
+snippet gr
+	group_by(${1:action})
+snippet by
+	group_by(${1:action})
+snippet ar
+	arrange(${1:action})
+snippet .a
+	${1:action} <- ${2:action}${0}
+snippet as
+	${1:action} <- ${2:action}${0}
+snippet mm
+	%>%
+	${0}
+snippet p
+	${1:first} + ${2:second}
+snippet s
+	${1:element1} < ${2:element2}
+snippet se
+	${1:element1} <= ${2:element2}
+snippet b
+	f${1:element1} > ${2:element2})
+snippet be
+	${1:element1} >= ${2:element2})
+snippet not
+	${1:element1} != ${2:element2}
+snippet i_e
+	if_else(${1:action}, 
+					${2:yes}, 
+					${3:no}, 
+					missing = ${4:NULL})
 # functions
-
 snippet ano
 	function(${1:parameters}) ${2:actions}
-
 # ggplot
 snippet gg
 	ggplot(aes(${1:parameters} )) + ${2:actions}
-
-# transformations
-snippet fa
-	factor(${1:parameters})
+# View .lastvalue
+snippet lvv
+	`r eval(View(.Last.value))`
+snippet lv
+	`r eval(View(.Last.value))`
+# Glimpse .lastvalue
+snippet lvg
+	glimpse(.Last.value)
+snippet lg
+	glimpse(.Last.value)
+# skim.lastvalue
+snippet ls
+	skimr::skim(.Last.value)
+# dm prod
+snippet dm_prod
+	my_db <- DBI::dbConnect(odbc::odbc(), 
+													dsn = "snowflake_dm_prod", 
+													uid = Sys.getenv("ALUSTA_KAYTTAJA"), 
+													pwd = Sys.getenv("ALUSTA_PASSU"))
+# ewd prod
+snippet edw_prod
+	my_db <- DBI::dbConnect(odbc::odbc(), 
+													dsn = "snowflake_edw_prod", 
+													uid = Sys.getenv("ALUSTA_KAYTTAJA"), 
+													pwd = Sys.getenv("ALUSTA_PASSU"))
+# analytics
+snippet analytics_prod
+my_db <- DBI::dbConnect(odbc::odbc(), 
+                        dsn = "snowflake_analytics_prod", 
+                        uid = Sys.getenv("ALUSTA_KAYTTAJA"), 
+                        pwd = Sys.getenv("ALUSTA_PASSU"))
+snippet followed_by
+	(?=)
+snippet not_followed_by
+	(?!)
+snippet preceeded_by
+	(?<=)
+snippet not_preceeded_by
+	(?<!)
